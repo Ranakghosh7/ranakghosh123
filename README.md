@@ -22,7 +22,7 @@ It’s where creativity meets functionality — built to showcase my **skills, p
 ## 🚀 Features That Shine
 
 ✨ **Responsive Design** — Looks perfect on desktops, tablets, and phones.  
-⚡ **Optimized Performance** — Lightweight, fast-loading, and smooth animations.  
+⚡ **Optimized Performance** — Lightweight, fast-loading, and smooth.  
 🎨 **Custom Styling** — Designed from scratch with precision and creativity.  
 📁 **Interactive Projects** — Explore my work, ideas, and experiments.  
 🪩 **Personal Touch** — Every detail reflects my design sensibilities.
