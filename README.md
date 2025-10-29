@@ -12,7 +12,7 @@
 
 ## 🪞 About This Project
 
-Welcome to my **personal portfolio website** — a digital reflection of my journey as a developer, designer, and lifelong learner.  
+Welcome to my **personal portfolio website** — a digital reflection of my journey as a developer, designer, and lifelong learner .  
 It’s where creativity meets functionality — built to showcase my **skills, projects, and professional identity** with a clean, modern aesthetic.
 
 > 🌈 *"A good design is where logic meets emotion."*
