@@ -43,13 +43,13 @@ It’s where creativity meets functionality — built to showcase my **skills, p
 ## 🗂️ Project Structure
 
 📦 ranakghosh123
-├── 📄 index.html # Home page
-├── 📄 about.html # About me section
-├── 📄 projects.html # Showcase of my projects
-├── 📄 contact.html # Contact and social links
-├── 📁 assets/ # Icons, images, and media
-├── 📁 css/ # Custom stylesheets
-└── 📁 js/ # JavaScript scripts and interactions
+├── 📄 index.html # Home page,
+├── 📄 about.html # About me section,
+├── 📄 projects.html # Showcase of my projects,
+├── 📄 contact.html # Contact and social links,
+├── 📁 assets/ # Icons, images, and media,
+├── 📁 css/ # Custom stylesheets,
+└── 📁 js/ # JavaScript scripts and interactions.
 
 
 ---
