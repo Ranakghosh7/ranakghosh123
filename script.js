@@ -10,7 +10,7 @@ function updateTime() {
     second: "2-digit",
   };
   
-  // Example: Fri, 21:37:04
+  // Example:- Fri, 21:37:04
   timeElement.textContent = now.toLocaleString("en-GB", options);
 }
 
