@@ -1,6 +1,6 @@
 // ---------- LIVE TIME  ----------
 function updateTime() {
-  const now = new Date();
+  const now = new Date ();
   const timeElement = document.getElementById("time");
 
   const options = {
