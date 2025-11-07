@@ -18,7 +18,7 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 
-
+ 
 // ---------- TYPING ANIMATION ----------
 function typeWriterEffect(element, text, speed = 50) {
   let i = 0;
