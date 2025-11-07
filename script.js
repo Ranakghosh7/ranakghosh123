@@ -11,7 +11,7 @@ function updateTime() {
   };
   
   // Example:- Fri, 21:37:04
-  timeElement.textContent = now.toLocaleString("en-GB", options) ;
+  timeElement.textContent = now.toLocaleString("en-GB", options);
 }
 
 // Update every second
