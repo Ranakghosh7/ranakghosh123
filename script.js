@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ---------- SMOOTH SCROLL FOR NAV LINKS ----------
+// ---------- SMOOTH SCROLL FOR NAV LINKS ------------
 document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
