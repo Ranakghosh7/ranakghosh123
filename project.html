@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Ranak Ghosh</title>
+    <style>
+        /* --- GLOBAL RESETS --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #111;
+        }
+
+        /* --- NAVBAR STYLES --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: transparent;
+        }
+
+        /* Left Side (Logo + Links) */
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-weight: 700;
+            color: #000;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #000;
+            font-weight: 500;
+        }
+
+        /* Right Side (Icons) */
+        .right-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .right-section a {
+            color: #555;
+            display: flex;
+            transition: color 0.2s;
+        }
+
+        .right-section a:hover {
+            color: #000;
+        }
+
+        /* --- PROJECTS PAGE SPECIFIC STYLES --- */
+        .projects-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 40px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            color: #111;
+        }
+
+        /* The Watermark/Background Text Group */
+        .category-group {
+            position: relative;
+            margin-bottom: 80px; /* Space between groups */
+        }
+
+        .watermark {
+            position: absolute;
+            top: -50px;
+            left: -20px;
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.03); /* Very faint grey */
+            z-index: -1;
+            user-select: none;
+            white-space: nowrap;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        /* Grid Layout */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 Columns */
+            gap: 40px 30px; /* Gap between rows and columns */
+            margin-top: 20px;
+        }
+
+        /* Card Styling */
+        .project-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .project-card:hover {
+            background-color: #fafafa;
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+            min-width: 30px;
+            text-align: center;
+            padding-top: 2px; /* Slight alignment fix */
+        }
+
+        .card-info h3 {
+            margin: 0 0 6px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .card-info p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+            .left-section {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                gap: 20px;
+            }
+            .right-section {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .project-grid {
+                grid-template-columns: 1fr; /* 1 Column on mobile */
+            }
+            .watermark {
+                font-size: 3rem;
+                top: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <nav class="navbar">
+        <div class="left-section">
+            <a href="index.html" class="logo">
+                ranak.
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="https://response-time-in-nodejs.hashnode.dev/">Blog</a></li>
+                <li><a href="https://dev.to/ranak_ghosh_59b3080779a92">Notes</a></li>
+                <li><a href="work.html">Work</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+            </ul>
+        </div>
+         
+        <div class="right-section">
+            <a href="https://github.com/Ranakghosh7" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://twitter.com/Ranakghosh7" target="_blank" aria-label="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="#" aria-label="RSS">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+            </a>
+        </div>
+    </nav>
+
+    <main class="projects-container">
+        
+        <h1 class="page-title">Projects</h1>
+
+        <div class="category-group">
+            <div class="watermark">Engineering & Systems</div>
+
+            <div class="project-grid">
+                <a href="#" class="project-card">
+                    <div class="card-icon">🎬</div>
+                    <div class="card-info">
+                        <h3>Movie Explorer</h3>
+                        <p>TypeScript backend service with Express & CORS for movie data.</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Ranakghosh7/Password_Manager" target="_blank" class="project-card">
+                    <div class="card-icon">🔐</div>
+                    <div class="card-info">
+                        <h3>PasswordManager</h3>
+                        <p>Secure Java vault using AES/GCM encryption and PBKDF2.</p>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div class="card-icon">👾</div>
+                    <div class="card-info">
+                        <h3>Stupid Game</h3>
+                        <p>Experimental game project with chaotic physics and random events.</p>
+                    </div>
+                </a>
+                
+                 <a href="#" class="project-card">
+                    <div class="card-icon">🚗</div>
+                    <div class="card-info">
+                        <h3>Rental System</h3>
+                        <p>Java OOP project demonstrating polymorphism and inheritance.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="category-group">
+            <div class="watermark">Algorithms</div>
+            
+            <div class="project-grid">
+                <a href="https://github.com/Ranakghosh7/Linear_regression_pure" target="_blank" class="project-card">
+                    <div class="card-icon">📐</div>
+                    <div class="card-info">
+                        <h3>Pure JS Linear Regression</h3>
+                        <p>A "no-magic" implementation of statistical formulas using vanilla JavaScript.</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Ranakghosh7/Smartpredict" target="_blank" class="project-card">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-info">
+                        <h3>SmartPredict</h3>
+                        <p>Python tool for automating Random Forest Regressor training and analysis.</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Ranakghosh7/Rental_System" target="_blank" class="project-card">
+                    <div class="card-icon">🚗</div>
+                    <div class="card-info">
+                        <h3>Vehicle Rental System</h3>
+                        <p>Java OOP demonstration of inheritance, abstraction, and polymorphism.</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Ranakghosh7/iris_knn_project" target="_blank" class="project-card">
+                    <div class="card-icon">🌸</div>
+                    <div class="card-info">
+                        <h3>Iris KNN Project (R)</h3>
+                        <p>Classic data science pipeline using R, ggplot2, and K-Nearest Neighbors.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-group">
+            <div class="watermark">Creative</div>
+
+            <div class="project-grid">
+                <a href="https://github.com/Ranakghosh7/stupid_game" target="_blank" class="project-card">
+                    <div class="card-icon">🎮</div>
+                    <div class="card-info">
+                        <h3>Stupid Game</h3>
+                        <p>A chaotic, experimental game that defies logical physics.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+
+
+<!-- Add this inside your <body> -->
+<canvas id="magicCursor"></canvas>
+
+<script>
+const canvas = document.getElementById("magicCursor");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+canvas.style.position = "fixed";
+canvas.style.top = 0;
+canvas.style.left = 0;
+canvas.style.pointerEvents = "none";
+canvas.style.zIndex = 9999;
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+class Particle {
+  constructor(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.size = Math.random() * 6 + 2;
+    this.speedX = (Math.random() - 0.5) * 4;
+    this.speedY = (Math.random() - 0.5) * 4;
+    this.color = color;
+    this.life = 100;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.size *= 0.96;
+    this.life--;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+}
+
+function randomColor() {
+  return `hsl(${Math.random() * 360}, 100%, 70%)`;
+}
+
+window.addEventListener("mousemove", (e) => {
+  for (let i = 0; i < 5; i++) {
+    particles.push(new Particle(e.clientX, e.clientY, randomColor()));
+  }
+});
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach((p, i) => {
+    p.update();
+    p.draw();
+    if (p.life <= 0 || p.size < 0.5) particles.splice(i, 1);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

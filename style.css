@@ -148,3 +148,54 @@ body {
   transform: scale(1.05);
   border-color: var(--link-color);
 }
+/* --- Fix for Headings and Links --- */
+h2 a, h3 a, h4 a, h5 a, .text-link {
+    color: inherit;        /* Forces link to be black/grey (not violet) */
+    text-decoration: none; /* Removes the underline */
+}
+
+/* --- Hover State --- */
+h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, .text-link:hover {
+    text-decoration: underline; /* Adds underline only on hover */
+    cursor: pointer;
+}
+
+/* --- NUCLEAR FIX: Target the SVG Stroke Directly --- */
+
+/* 1. Force the icons to be Grey (ignoring the link color) */
+.right-section a svg {
+    stroke: #555 !important;
+    transition: stroke 0.2s ease;
+}
+
+/* 2. Force the icons to be Black on hover */
+.right-section a:hover svg {
+    stroke: #000 !important;
+}/* --- Fix for "All Projects" Link + Banana Cursor --- */
+.clean-link {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+.clean-link:visited {
+    color: inherit !important;
+}
+
+.clean-link:hover {
+    text-decoration: underline;
+    color: #000 !important;
+
+    /* BANANA CURSOR */
+    /* This pulls a small banana image from the web */
+    cursor: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f34c.png') 36 36, auto;
+}
+/* --- Hover State with SMALLER Banana --- */
+.clean-link:hover {
+    text-decoration: underline;
+    color: #000 !important;
+
+    /* This uses a specific 32x32 pixel image. 
+       The ', auto' at the end is REQUIRED for it to work.
+    */
+    cursor: url('https://img.icons8.com/emoji/32/000000/banana-emoji.png'), auto;
+}
