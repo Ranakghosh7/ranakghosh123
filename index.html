@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RANAK GHOSH</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
  <nav class="navbar">
@@ -39,21 +40,143 @@
 </nav>
 
   <header>
-    <h2>~/Devops & Software Developer</h2>
+    <h2>~/Full-Stack Developer & Undergraduate Researcher</h2>
     <h1> RANAK GHOSH</h1>
     <p>Rome, Italy</p>
     <p id="time"></p>
   </header>
 
   <section id="about">
-    <p>Im an Devops & Software Developer. Exploring the intersection of Cloud Computing, NLP, and Machine Learning. <strong> Affiliation: University Of Rome Tor Vergata</strong> </p>
+    <p>Im an Full Stack Developer & Undergraduate Researcher . Exploring the intersection of Cloud Computing, NLP, and Machine Learning. <strong> Affiliation: University Of Rome Tor Vergata</strong> </p>
     <!--Currently I work as a DevOps engineer at <strong>Your Company</strong>, where I manage Kubernetes clusters.</p> --->
   </section>
-<!-- Profile Image for the main part of the body-->
-   <div class="profile">
-     <img src="photo.jpg" alt="yourname"> 
+<!-- ============ TRAVEL MAP (replaces profile photo) ============ -->
+  <figure class="travelmap">
+    <div class="tm-frame">
+      <div id="worldMap"></div>
+      <div class="tm-badge"><span class="tm-live"></span>live · scroll to zoom</div>
     </div>
-    <br>
+    <figcaption class="tm-legend">
+      <span class="lg"><i class="glow"></i>home — Rome</span>
+      <span class="lg"><i class="d visited"></i>visited</span>
+      <span class="lg"><i class="d wishlist"></i>want to visit</span>
+      <span class="lg"><i class="d lived"></i>lived</span>
+      <span class="lg tm-count" id="tmCount"></span>
+      <a href="#" id="flyHome" class="tm-reset">↺ recenter</a>
+    </figcaption>
+  </figure>
+
+  <style>
+    .travelmap { margin: 0 0 1.25rem; }
+    .tm-frame {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f4f7f9;
+      box-shadow: 0 1px 2px rgba(16,32,48,.06),
+                  0 12px 30px -12px rgba(16,32,48,.22);
+      border: 1px solid rgba(46,147,160,.18);
+    }
+    #worldMap {
+      width: 100%;
+      height: 440px;
+      background: #f4f7f9;   /* ocean */
+      z-index: 1;
+      cursor: grab;
+    }
+    #worldMap:active { cursor: grabbing; }
+    .leaflet-container { background: #f4f7f9 !important; outline: none; }
+
+    /* live badge */
+    .tm-badge {
+      position: absolute; top: 12px; right: 12px; z-index: 500;
+      display: flex; align-items: center; gap: .45rem;
+      font-family: 'Fira Code', monospace; font-size: .68rem; letter-spacing: .02em;
+      color: #5a6b74; background: rgba(255,255,255,.82);
+      backdrop-filter: blur(4px);
+      padding: .3rem .6rem; border-radius: 20px;
+      border: 1px solid rgba(16,32,48,.06);
+      pointer-events: none;
+    }
+    .tm-live {
+      width: 7px; height: 7px; border-radius: 50%; background: #2ecc71;
+      box-shadow: 0 0 0 0 rgba(46,204,113,.6);
+      animation: tmPing 1.8s ease-out infinite;
+    }
+    @keyframes tmPing {
+      0%   { box-shadow: 0 0 0 0 rgba(46,204,113,.55); }
+      100% { box-shadow: 0 0 0 7px rgba(46,204,113,0); }
+    }
+
+    /* legend */
+    .tm-legend {
+      display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.2rem;
+      font-family: 'Fira Code', monospace; font-size: .72rem;
+      color: #6b7a82; margin-top: .7rem;
+    }
+    .tm-legend .lg { display: flex; align-items: center; gap: .45rem; }
+    .tm-legend i { display: inline-block; }
+    .tm-legend .d { width: 11px; height: 11px; transform: rotate(45deg);
+      border: 1.5px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+    .tm-legend .visited  { background: #2e86c1; }
+    .tm-legend .wishlist { background: #e84393; }
+    .tm-legend .lived    { background: #f39c12; }
+    .tm-legend .glow {
+      width: 12px; height: 12px; border-radius: 50%; background: #2ecc71;
+      box-shadow: 0 0 0 3px rgba(46,204,113,.28);
+    }
+    .tm-count { color: #9aa7ae; }
+    .tm-reset { margin-left: auto; color: #2e93a0; text-decoration: none; }
+    .tm-reset:hover { text-decoration: underline; }
+
+    /* home glow marker */
+    .home-glow { position: relative; }
+    .home-glow .halo {
+      position: absolute; top: 50%; left: 50%; width: 46px; height: 46px;
+      transform: translate(-50%, -50%); border-radius: 50%;
+      background: radial-gradient(circle, rgba(46,204,113,.45) 0%, rgba(46,204,113,.12) 45%, rgba(46,204,113,0) 70%);
+    }
+    .home-glow .halo.pulse { animation: haloPulse 2.4s ease-out infinite; }
+    @keyframes haloPulse {
+      0%   { transform: translate(-50%,-50%) scale(.6); opacity: 1; }
+      100% { transform: translate(-50%,-50%) scale(1.4); opacity: 0; }
+    }
+    .home-glow .core {
+      position: absolute; top: 50%; left: 50%; width: 12px; height: 12px;
+      transform: translate(-50%,-50%); border-radius: 50%;
+      background: #27ae60; border: 2px solid #fff;
+      box-shadow: 0 0 6px rgba(39,174,96,.8);
+    }
+
+    /* diamond pins */
+    .pin { width: 12px; height: 12px; transform: rotate(45deg);
+      border: 1.5px solid #fff; border-radius: 2px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.35); transition: filter .15s, transform .15s; }
+    .pin:hover { filter: brightness(1.12); }
+    .pin.visited  { background: #2e86c1; }
+    .pin.wishlist { background: #e84393; }
+    .pin.lived    { background: #f39c12; }
+
+    /* leaflet chrome tuned to match */
+    .leaflet-bar a {
+      background: rgba(255,255,255,.9); color: #34495e; border: none;
+      width: 28px; height: 28px; line-height: 28px; font-size: 16px;
+    }
+    .leaflet-bar a:hover { background: #fff; color: #2e93a0; }
+    .leaflet-bar { border: 1px solid rgba(16,32,48,.08); box-shadow: 0 2px 8px rgba(16,32,48,.12); border-radius: 8px; overflow: hidden; }
+    .leaflet-popup-content-wrapper { border-radius: 10px; box-shadow: 0 6px 22px -6px rgba(16,32,48,.4); }
+    .leaflet-popup-content { font-family: 'Fira Code', monospace; font-size: .78rem; line-height: 1.5; margin: .7rem .9rem; }
+    .leaflet-popup-content b { color: #1a2530; }
+    .leaflet-popup-tip { box-shadow: none; }
+    .leaflet-control-attribution { font-size: 9px; background: rgba(255,255,255,.7); }
+
+    @media (max-width: 600px) { #worldMap { height: 320px; } .tm-legend { font-size: .68rem; } }
+    @media (prefers-reduced-motion: reduce) {
+      .tm-live, .home-glow .halo.pulse { animation: none; }
+    }
+  </style>
+  <br>
+
      <p>My primary passion lies in <strong> computational research</strong> —specifically how we can democratize Machine Learning (as seen in CloudClimateML) and ensure AI ethics (as seen in my Bias-Aware Feedback research). I build tools not just to solve problems, but to understand the underlying mechanics of the solutions.</p>
     
   <br>
@@ -211,6 +334,8 @@ animate();
 
 
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="map.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
